@@ -14,7 +14,7 @@ The tasks look for `choco.exe` at the `chocolatey_path`. The installer Powershel
 Example Playbook
 ----------------
 
-    - hosts: servers
+    - hosts: win_servers
       roles:
          - role: deekayen.chocolatey
            chocolatey_installer: https://chocolatey.org/install.ps1
