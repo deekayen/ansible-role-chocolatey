@@ -1,0 +1,15 @@
+galaxy_info:
+  author: David Norman
+  description: Install the Chocolatey package manager on Microsoft Windows.
+  license: BSD
+  min_ansible_version: 1.7
+  github_branch: master
+  platforms:
+  - name: Windows
+    versions:
+    - all
+  galaxy_tags:
+  - windows
+  - chocolatey
+
+dependencies: []

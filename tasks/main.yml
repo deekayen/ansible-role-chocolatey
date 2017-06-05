@@ -1,0 +1,16 @@
+---
+
+- name: "Check for existing chocolatey install."
+  win_stat:
+    path: "{{ chocolatey_path}}/choco.exe"
+  register: chocolatey_exe
+
+- debug:
+    var: chocolatey_exe
+    verbosity: 1
+
+- name: "Install Chocolatey."
+  raw: "iex ((New-Object System.Net.WebClient).DownloadString('{{ chocolatey_installer }}'))"
+  when:
+    - chocolatey_exe.stat.exists is defined
+    - not chocolatey_exe.stat.exists
