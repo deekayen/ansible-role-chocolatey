@@ -2,7 +2,7 @@
 
 - name: "Check for existing chocolatey install."
   win_stat:
-    path: "{{ chocolatey_path}}/choco.exe"
+    path: "{{ chocolatey_path }}/choco.exe"
   register: chocolatey_exe
 
 - debug:
