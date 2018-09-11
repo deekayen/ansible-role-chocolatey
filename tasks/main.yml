@@ -7,10 +7,17 @@
 
 - debug:
     var: chocolatey_exe
-    verbosity: 1
+    verbosity: 2
 
 - name: "Install Chocolatey."
   raw: "iex ((New-Object System.Net.WebClient).DownloadString('{{ chocolatey_installer }}'))"
   when:
     - chocolatey_exe.stat.exists is defined
     - not chocolatey_exe.stat.exists
+
+- name: "Add chocolatey to PATH."
+  win_path:
+    name: PATH
+    elements: '%ALLUSERSPROFILE%\chocolatey\bin'
+    scope: machine
+    state: present
