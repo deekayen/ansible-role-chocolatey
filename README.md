@@ -3,6 +3,8 @@ Chocolatey
 
 Install the Chocolatey package manager on Microsoft Windows.
 
+If Chocolatey is missing from the system, the win_chocolatey module is supposed to install it. This role may be helpful to ensure Chocolatey is available on a system, even if you don't run win_chocolatey tasks against it. See http://docs.ansible.com/ansible/win_chocolatey_module.html.
+
 Role Variables
 --------------
 
