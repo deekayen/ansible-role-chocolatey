@@ -14,7 +14,7 @@ The tasks look for `choco.exe` at the `chocolatey_path`. The installer Powershel
 
     chocolatey_installer: https://chocolatey.org/install.ps1
     chocolatey_path: c:/ProgramData/chocolatey
-    chocolatey_windows_compression: "true"
+    chocolatey_windows_compression: "false"
 
 Example Playbook
 ----------------
