@@ -19,7 +19,7 @@
 
 - debug:
     var: chocolatey_install_result
-    verbosity: 2
+    verbosity: 3
 
 - name: "Add chocolatey to PATH."
   win_path:
