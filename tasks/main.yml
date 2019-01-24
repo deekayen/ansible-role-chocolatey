@@ -10,7 +10,8 @@
     verbosity: 2
 
 - name: "Install Chocolatey."
-  raw: "iex ((New-Object System.Net.WebClient).DownloadString('{{ chocolatey_installer }}'))"
+  raw: "$env:chocolateyUseWindowsCompression='{{ chocolatey_windows_compression }}'; \
+  iex ((New-Object System.Net.WebClient).DownloadString('{{ chocolatey_installer }}'))"
   when:
     - chocolatey_exe.stat.exists is defined
     - not chocolatey_exe.stat.exists
