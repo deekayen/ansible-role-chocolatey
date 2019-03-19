@@ -9,13 +9,24 @@
     var: chocolatey_exe
     verbosity: 2
 
-- name: "Install Chocolatey."
+- name: "Install latest Chocolatey."
   raw: "$env:chocolateyUseWindowsCompression='{{ chocolatey_windows_compression }}'; \
   iex ((New-Object System.Net.WebClient).DownloadString('{{ chocolatey_installer }}'))"
   register: chocolatey_install_result
   when:
     - chocolatey_exe.stat.exists is defined
     - not chocolatey_exe.stat.exists
+    - chocolatey_version == "latest"
+
+- name: "Install specific Chocolatey."
+  raw: "$env:chocolateyUseWindowsCompression='{{ chocolatey_windows_compression }}'; \
+  $env:chocolateyVersion = '{{ chocolatey_version }}'; \
+  iex ((New-Object System.Net.WebClient).DownloadString('{{ chocolatey_installer }}'))"
+  register: chocolatey_install_result
+  when:
+    - chocolatey_exe.stat.exists is defined
+    - not chocolatey_exe.stat.exists
+    - chocolatey_version != "latest"
 
 - debug:
     var: chocolatey_install_result
