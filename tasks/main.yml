@@ -11,6 +11,7 @@
 
 - name: "Install latest Chocolatey."
   raw: "$env:chocolateyUseWindowsCompression='{{ chocolatey_windows_compression }}'; \
+  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; \
   iex ((New-Object System.Net.WebClient).DownloadString('{{ chocolatey_installer }}'))"
   register: chocolatey_install_result
   when:
