@@ -1,15 +1,20 @@
 galaxy_info:
+  role_name: chocolatey
   author: David Norman
   description: Install the Chocolatey package manager on Microsoft Windows.
   license: BSD
   min_ansible_version: 2.3
-  github_branch: master
+  
+  github_branch: main
+  issue_tracker_url: https://github.com/deekayen/ansible-role-chocolatey/issues
+  
   platforms:
-  - name: Windows
-    versions:
-    - all
+    - name: Windows
+      versions:
+        - all
+
   galaxy_tags:
-  - windows
-  - chocolatey
+    - windows
+    - chocolatey
 
 dependencies: []
