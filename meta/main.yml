@@ -4,10 +4,10 @@ galaxy_info:
   description: Install the Chocolatey package manager on Microsoft Windows.
   license: BSD
   min_ansible_version: 2.3
-  
+
   github_branch: main
   issue_tracker_url: https://github.com/deekayen/ansible-role-chocolatey/issues
-  
+
   platforms:
     - name: Windows
       versions:
