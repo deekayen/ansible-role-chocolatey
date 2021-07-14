@@ -1,7 +1,7 @@
 Chocolatey
 ==========
 
-[![Build Status](https://travis-ci.org/deekayen/ansible-role-chocolatey.svg?branch=main)](https://travis-ci.org/deekayen/ansible-role-chocolatey) [![Project Status: Unsupported – The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.](https://www.repostatus.org/badges/latest/unsupported.svg)](https://www.repostatus.org/#unsupported) ![BSD 3-Clause license](https://img.shields.io/badge/license-BSD%203--Clause-blue) ![Windows platform](https://img.shields.io/badge/platform-windows-lightgrey)
+[![CI](https://github.com/deekayen/ansible-role-chocolatey/actions/workflows/ci.yml/badge.svg)](https://github.com/deekayen/ansible-role-chocolatey/actions/workflows/ci.yml) [![Project Status: Unsupported – The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.](https://www.repostatus.org/badges/latest/unsupported.svg)](https://www.repostatus.org/#unsupported) ![BSD 3-Clause license](https://img.shields.io/badge/license-BSD%203--Clause-blue) ![Windows platform](https://img.shields.io/badge/platform-windows-lightgrey)
 
 Install the Chocolatey package manager on Microsoft Windows.
 

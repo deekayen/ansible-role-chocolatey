@@ -5,7 +5,8 @@
     path: "{{ chocolatey_path }}/choco.exe"
   register: chocolatey_exe
 
-- debug:
+- name: "Debug: Existing Chocolatey status."
+  debug:
     var: chocolatey_exe
     verbosity: 2
 
@@ -29,7 +30,8 @@
     - not chocolatey_exe.stat.exists
     - chocolatey_version != "latest"
 
-- debug:
+- name: "Debug: Chocolatey install output."
+  debug:
     var: chocolatey_install_result
     verbosity: 3
 

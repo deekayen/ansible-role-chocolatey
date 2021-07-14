@@ -1,5 +1,8 @@
+---
+
 galaxy_info:
   role_name: chocolatey
+  namespace: deekayen
   author: David Norman
   description: Install the Chocolatey package manager on Microsoft Windows.
   license: BSD
