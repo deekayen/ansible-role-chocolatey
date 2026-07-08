@@ -1,0 +1,8 @@
+---
+- name: Apply the chocolatey role for a syntax check.
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  roles:
+    - role: "../"  # noqa: role-name[path]

@@ -1,0 +1,44 @@
+---
+argument_specs:
+  main:
+    short_description: Install the Chocolatey package manager on Microsoft Windows.
+    description:
+      - Checks for an existing Chocolatey installation, downloads and runs
+        the official install script when choco.exe is missing, and adds the
+        Chocolatey bin directory to the machine PATH.
+    author:
+      - David Norman
+    options:
+      chocolatey_installer:
+        type: str
+        default: https://chocolatey.org/install.ps1
+        description: >-
+          URL of the Chocolatey install PowerShell script. Point this at an
+          internal mirror when the target machine has no Internet access or
+          uses a customized install script.
+
+      chocolatey_path:
+        type: str
+        default: c:/ProgramData/chocolatey
+        description: >-
+          Directory where the role looks for an existing choco.exe to decide
+          whether Chocolatey is already installed.
+
+      chocolatey_version:
+        type: str
+        default: latest
+        description: >-
+          Chocolatey version to install (for example C(1.4.0)), or C(latest)
+          to install whatever version the install script provides.
+
+      chocolatey_windows_compression:
+        type: str
+        default: "false"
+        choices:
+          - "true"
+          - "false"
+        description: >-
+          Value injected into the C($env:chocolateyUseWindowsCompression)
+          PowerShell environment variable for the install script. Kept as a
+          string (not a boolean) because it is interpolated directly into
+          PowerShell.

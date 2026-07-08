@@ -1,42 +1,49 @@
 ---
+- name: Validate role variables.
+  ansible.builtin.import_tasks: assert.yml
+  tags:
+    - always
 
-- name: "Check for existing chocolatey install."
-  win_stat:
+- name: Check for an existing Chocolatey install.
+  ansible.windows.win_stat:
     path: "{{ chocolatey_path }}/choco.exe"
   register: chocolatey_exe
 
-- name: "Debug: Existing Chocolatey status."
-  debug:
+- name: Show the existing Chocolatey status.
+  ansible.builtin.debug:
     var: chocolatey_exe
     verbosity: 2
 
-- name: "Install latest Chocolatey."
-  raw: "$env:chocolateyUseWindowsCompression='{{ chocolatey_windows_compression }}'; \
+- name: Install the latest Chocolatey.
+  ansible.builtin.raw: "$env:chocolateyUseWindowsCompression='{{ chocolatey_windows_compression }}'; \
   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; \
   iex ((New-Object System.Net.WebClient).DownloadString('{{ chocolatey_installer }}'))"
   register: chocolatey_install_result
+  changed_when: true
   when:
     - chocolatey_exe.stat.exists is defined
     - not chocolatey_exe.stat.exists
     - chocolatey_version == "latest"
 
-- name: "Install specific Chocolatey."
-  raw: "$env:chocolateyUseWindowsCompression='{{ chocolatey_windows_compression }}'; \
+- name: Install a specific Chocolatey version.
+  ansible.builtin.raw: "$env:chocolateyUseWindowsCompression='{{ chocolatey_windows_compression }}'; \
   $env:chocolateyVersion = '{{ chocolatey_version }}'; \
+  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; \
   iex ((New-Object System.Net.WebClient).DownloadString('{{ chocolatey_installer }}'))"
   register: chocolatey_install_result
+  changed_when: true
   when:
     - chocolatey_exe.stat.exists is defined
     - not chocolatey_exe.stat.exists
     - chocolatey_version != "latest"
 
-- name: "Debug: Chocolatey install output."
-  debug:
+- name: Show the Chocolatey install output.
+  ansible.builtin.debug:
     var: chocolatey_install_result
     verbosity: 3
 
-- name: "Add chocolatey to PATH."
-  win_path:
+- name: Add Chocolatey to the machine PATH.
+  ansible.windows.win_path:
     name: PATH
     elements: '%ALLUSERSPROFILE%\chocolatey\bin'
     scope: machine

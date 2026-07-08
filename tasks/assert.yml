@@ -1,0 +1,28 @@
+---
+- name: Assert chocolatey_installer is an HTTP(S) URL.
+  ansible.builtin.assert:
+    that:
+      - chocolatey_installer is match('^https?://')
+    fail_msg: "chocolatey_installer must start with http:// or https://, got: {{ chocolatey_installer }}"
+    quiet: true
+
+- name: Assert chocolatey_path is not empty.
+  ansible.builtin.assert:
+    that:
+      - chocolatey_path | length > 0
+    fail_msg: "chocolatey_path must not be empty."
+    quiet: true
+
+- name: Assert chocolatey_version is not empty.
+  ansible.builtin.assert:
+    that:
+      - chocolatey_version | length > 0
+    fail_msg: "chocolatey_version must be 'latest' or a specific version, not empty."
+    quiet: true
+
+- name: Assert chocolatey_windows_compression is a PowerShell-friendly boolean string.
+  ansible.builtin.assert:
+    that:
+      - chocolatey_windows_compression in ['true', 'false']
+    fail_msg: "chocolatey_windows_compression must be the string 'true' or 'false', got: {{ chocolatey_windows_compression }}"
+    quiet: true
